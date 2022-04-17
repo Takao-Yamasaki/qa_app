@@ -26,3 +26,15 @@ $ rails g model Question title:string description:text
 ```
 - そのまま`rails db:migrate`
 
+## questionコントローラの作成
+```
+$ rails g controller questions index new create show edit destroy
+```
+
+## routes.rbへルーティングを定義
+- `config/routes.rb`にルーティングを定義
+```
+root to: 'questions#index'
+resources :questions
+```
+
