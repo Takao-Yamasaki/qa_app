@@ -7,3 +7,10 @@ $ wget https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/local
 ```
 config.i18n.default_locale = :ja
 ```
+
+## ユーザーモデルの作成
+ユーザーモデルの雛形を作成する
+```
+$ rails g model User name:string email:string
+```
+
