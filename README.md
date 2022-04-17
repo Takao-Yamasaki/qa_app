@@ -44,4 +44,28 @@ resources :questions
 = link_to '質問作成', new_question_path, class: 'btn btn-primary'
 
 ```
-- `config/locales/ja.yml`に追記
+- `config/locales/ja.yml`に追記し、翻訳情報を追記する
+```
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      question: 質問
+    attributes:
+      question:
+        id: ID
+        title: タイトル
+        description: 質問内容
+```
+- 質問作成画面のためのアクションを追加
+`app/controllers/questions_controller.rb`に追記
+```
+def new
+    @question = Question.new
+end
+```

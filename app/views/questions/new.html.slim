@@ -1,2 +1,13 @@
-h1 Questions#new
-p Find me in app/views/questions/new.html.slim
+h1 質問作成
+
+.nav.justify-content-end
+  = link_to '質問作成', new_question_path , class: 'nav-link'
+
+= form_with model: @question, local: true do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control', id: 'question_title'
+  .form-group 
+    = f.label :description
+    = f.text_field :title, class: 'form-control', id: 'questions_description'
+  = f.submit nil, class: 'btn btn-primary'
