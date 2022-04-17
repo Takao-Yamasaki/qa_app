@@ -38,3 +38,10 @@ root to: 'questions#index'
 resources :questions
 ```
 
+# ビューを作成
+- `app/veiws/questions/index.html.slim`にリンクを追加
+```
+= link_to '質問作成', new_question_path, class: 'btn btn-primary'
+
+```
+- `config/locales/ja.yml`に追記
