@@ -80,3 +80,18 @@ end
 
 - app/veiwx/layouts/application.html.slimの実装
 
+## Userモデルにadminフラグを追加
+- マイグレーションファイルの作成(flagの追加)
+```
+$ rails g migration add_admin_to_users
+```
+- マイグレーションファイルに記述を追加
+```
+def change
+  add_colmun :users, :admin, :boolean, default: :false, null: false 
+end
+```
+- カラムの追加
+```
+rails db:migrate
+```
