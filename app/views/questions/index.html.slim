@@ -7,8 +7,11 @@ table.table.table-hover
     tr 
       th= Question.human_attribute_name(:title)
       th= Question.human_attribute_name(:description)
+      th 
   tbody 
     - @questions.each do |question|
       tr
         td= link_to question.title, question  
         td= question.description
+        td
+          = link_to '編集', edit_question_path(question), class: 'btn btn-primary mr-3'
