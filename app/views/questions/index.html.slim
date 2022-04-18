@@ -10,5 +10,5 @@ table.table.table-hover
   tbody 
     - @questions.each do |question|
       tr
-        td= question.title 
+        td= link_to question.title, question  
         td= question.description
