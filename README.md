@@ -77,3 +77,6 @@ def create
     redirect_to questions_url, notice: "質問を作成しました。"
 end
 ```
+
+- app/veiwx/layouts/application.html.slimの実装
+
