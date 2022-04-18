@@ -70,3 +70,10 @@ def new
 end
 ```
 - 登録アクションを実装する
+```
+def create
+    @question = Question.new(questions_params)
+    @question.save!
+    redirect_to questions_url, notice: "質問を作成しました。"
+end
+```
