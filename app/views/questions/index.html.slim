@@ -15,3 +15,4 @@ table.table.table-hover
         td= question.description
         td
           = link_to '編集', edit_question_path(question), class: 'btn btn-primary mr-3'
+          = link_to '削除', question, method: :delete, data: { confirm: '質問を削除します。よろしいですか？' }, class: 'btn btn-danger'
