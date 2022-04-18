@@ -69,3 +69,4 @@ def new
     @question = Question.new
 end
 ```
+- 登録アクションを実装する

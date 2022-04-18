@@ -7,6 +7,9 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @question = Question.new(questions_params)
+    @question.save!
+    redirect_to questions_url, notice: "質問を作成しました。"
   end
 
   def show
@@ -16,5 +19,11 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def questions_params
+    params.require(:question).permit(:title, :description)
   end
 end
