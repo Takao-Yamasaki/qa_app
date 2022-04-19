@@ -105,6 +105,7 @@ rails db:migrate
 ```
 $ rails g controller Admin::Users new edit show index
 ```
-- 
+- Sessionsコントローラの作成
+rails g controller Sessions new
 # 参考
 - [【Ruby on Rails】rails g コマンドが反応しない時の対処法](https://dara-blog.com/about-rails-error05)
