@@ -1,4 +1,4 @@
-# 構築手順
+# 構築メモ
 ## 日本語翻訳ファイルのダウンロード
 ```
 $ wget https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml --output-file=config/locales/ja.yml
@@ -80,6 +80,12 @@ end
 
 - app/veiwx/layouts/application.html.slimの実装
 
+## rails g が反応しない
+```
+$ spring stop
+Spring stopped.
+```
+
 ## Userモデルにadminフラグを追加
 - マイグレーションファイルの作成(flagの追加)
 ```
@@ -95,3 +101,10 @@ end
 ```
 rails db:migrate
 ```
+- コントローラの実装
+```
+$ rails g controller Admin::Users new edit show index
+```
+- 
+# 参考
+- [【Ruby on Rails】rails g コマンドが反応しない時の対処法](https://dara-blog.com/about-rails-error05)
