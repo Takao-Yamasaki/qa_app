@@ -16,12 +16,14 @@ h1 質問一覧
 table.table.table-hover 
   thead.thead-default 
     tr 
+      th= Question.human_attribute_name(:image)
       th= Question.human_attribute_name(:title)
       th= Question.human_attribute_name(:description)
       th 
   tbody 
     - @questions.each do |question|
       tr
+        td= image_tag current_user.image, class: 'mr-3 rounded-circle' 
         td= link_to question.title, question  
         td= question.description
         td
