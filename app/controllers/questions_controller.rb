@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @questions = current_user.questions.find(params[:id])
   end
 
   def new
@@ -8,9 +8,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(questions_params)
-    @question.save!
-    redirect_to questions_url, notice: "質問を作成しました。"
+    @question = current_user.questions.new(questions_params)
+    if @question.save
+      redirect_to questions_url, notice: "質問を作成しました。" 
+    else
+      render :new
+    end
   end
 
   def show
