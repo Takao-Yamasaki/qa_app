@@ -113,5 +113,10 @@ $ rails g controller Sessions new
 $ rails g migration AddUserIdToQuestions
 ```
 
+- 画像ファイルを添付する
+```
+$ rails active_storage:install
+Copied migration 20220420124208_create_active_storage_tables.active_storage.rb from active_storage
+```
 # 参考
 - [【Ruby on Rails】rails g コマンドが反応しない時の対処法](https://dara-blog.com/about-rails-error05)
