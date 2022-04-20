@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
-  validates :name, presence: true
-  validate :validate_name_not_including_comma
+  validates :title, presence: true
+  # validate :validate_name_not_including_comma
   
-  belong_to :user
+  belongs_to :user
 
 end

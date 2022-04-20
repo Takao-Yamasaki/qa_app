@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = current_user.questions.find(params[:id])
+    @questions = current_user.questions
   end
 
   def new
