@@ -9,7 +9,10 @@ h1 質問一覧
   .form-group 
     = f.submit class: 'btn btn-outline-primary'
 
-.mb-3 
+.mb-3
+  = paginate @questions
+  = page_entries_info @questions
+
 table.table.table-hover 
   thead.thead-default 
     tr 

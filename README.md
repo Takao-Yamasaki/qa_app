@@ -118,5 +118,10 @@ $ rails g migration AddUserIdToQuestions
 $ rails active_storage:install
 Copied migration 20220420124208_create_active_storage_tables.active_storage.rb from active_storage
 ```
+
+- デザインの調整
+```
+$ rails g kaminari:views bootstrap4
+```
 # 参考
 - [【Ruby on Rails】rails g コマンドが反応しない時の対処法](https://dara-blog.com/about-rails-error05)
