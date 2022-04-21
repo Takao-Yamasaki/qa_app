@@ -37,9 +37,15 @@ class QuestionsController < ApplicationController
     redirect_to questions_url, notice: '質問を削除しました。'
   end
 
+  def solve
+    question = Question.find(params[:id])
+    question.update!(params[:resolved] = true)
+    redirect_to question_url(question)
+  end
+
   private
 
   def questions_params
-    params.require(:question).permit(:title, :description)
+    params.require(:question).permit(:title, :description, :resolved)
   end
 end

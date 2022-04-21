@@ -123,5 +123,10 @@ Copied migration 20220420124208_create_active_storage_tables.active_storage.rb f
 ```
 $ rails g kaminari:views bootstrap4
 ```
+
+- resolvedカラムを追加
+```
+rails g migration add_resolved_to_users
+```
 # 参考
 - [【Ruby on Rails】rails g コマンドが反応しない時の対処法](https://dara-blog.com/about-rails-error05)

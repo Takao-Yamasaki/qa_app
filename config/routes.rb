@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   end
   
   root to: 'questions#index'
-  resources :questions
+  resources :questions do
+    resource :solve, only: [:update]
+  end
 end
