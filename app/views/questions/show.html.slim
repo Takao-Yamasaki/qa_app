@@ -29,3 +29,11 @@ table.table.table-hover
       = f.label :description, '回答内容'
       = f.text_area :description, class: 'form-control', id: 'answer_description'
     = f.submit nil, class: 'btn btn-primary'
+  hr
+  - @question.answers.each do |answer|
+    .list-unstyled
+      ul.media.mb-3.border-bottom.pb-3
+        li 
+          = image_tag current_user.image, size: '64x64', class: 'mr-3 rounded-circle'
+          = answer.description
+          = answer.created_at      
