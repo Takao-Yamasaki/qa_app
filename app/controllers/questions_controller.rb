@@ -39,9 +39,10 @@ class QuestionsController < ApplicationController
   end
 
   def solve
-    question = Question.find(params[:id])
-    question.update!(params[:resolved] = true)
-    redirect_to question_url(question)
+    @question = Question.find(params[:id])
+    @question.resolved = true
+    @question.save!
+    redirect_to question_url(@question), notice: '解決済みになりました。'
   end
 
   private

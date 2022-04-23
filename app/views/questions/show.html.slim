@@ -16,8 +16,10 @@ table.table.table-hover
     tr
       th= Question.human_attribute_name(:resolved)
       td= @question.resolved? ? '解決' : '未解決'
+    tr 
+- if @question.resolved == false 
+  = link_to '解決済みにする', questions_solve_path(@question), method: :post, data: { confirm: '解決済みにしますか？' }, class: 'btn btn-sm btn-info' 
 
-/ = link_to '解決済みにする', question_solve_path, method: :put, data: {confirm: '解決済みにしますか？'}, class: 'btn btn-sm btn-info' 
 = link_to '編集', edit_question_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @question, method: :delete, data: {confirm: '質問を削除します。よろしいですか？'}, class: 'btn btn-danger'
 

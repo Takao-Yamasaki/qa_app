@@ -27,7 +27,7 @@ table.table.table-hover
         td= image_tag current_user.image, class: 'mr-3 rounded-circle' 
         td= link_to question.title, question  
         td= question.description
-        td= question.resolved? ? '解決積み' : '未解決'
+        td= question.resolved? ? '解決済み' : '未解決'
         td 
           = link_to '編集', edit_question_path(question), class: 'btn btn-success btn-sm'
           = link_to '削除', question, method: :delete, data: { confirm: '質問を削除します。よろしいですか？' }, class: 'btn btn-danger btn-sm'
