@@ -36,4 +36,8 @@ table.table.table-hover
         li 
           = image_tag current_user.image, size: '64x64', class: 'mr-3 rounded-circle'
           = answer.description
-          = answer.created_at      
+          .text-right
+            div
+              = link_to '削除', question_answer_path(@question, answer), method: :delete, data: {confirm: '削除しますか？'} , class: 'btn btn-danger btn-sm'
+            span.small.text-muted
+              = answer.created_at
