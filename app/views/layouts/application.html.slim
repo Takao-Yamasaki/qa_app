@@ -8,12 +8,12 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body.vsc-initialized
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light.px-4.py-2
       = link_to 'Sample APP', root_path, class: 'navbar-brand' 
       button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
-        ul.navbar-nav.ml-auto
+        ul.navbar-nav.ms-auto
           - if current_user
             li.nav-item= link_to '質問作成', new_question_path, class: 'nav-link'
             li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link', data: {confirm: 'ログアウトしますか'}

@@ -19,7 +19,7 @@ ul.list-unstyled
       .media-body
         .d-flex
           h5.mt-0.mb-1.me-3
-            = link_to question.title, question
+            = link_to question.title, question, class: 'text-decoration-none'
           .me-3
             - if question.resolved?
               span.badge.bg-success
@@ -28,7 +28,7 @@ ul.list-unstyled
               span.badge.bg-danger
                 '未解決 
           div          
-            = link_to '編集', edit_question_path(question), class: 'btn btn-success btn-sm', role: 'button'
+            = link_to '編集', edit_question_path(question), class: 'btn btn-success btn-sm me-1', role: 'button'
             = link_to '削除', question, method: :delete, data: { confirm: '質問を削除します。よろしいですか？' }, class: 'btn btn-danger btn-sm', role: 'button'
         = question.description
 
