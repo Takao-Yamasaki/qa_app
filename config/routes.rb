@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   root to: 'questions#index'
   post '/questions/:id/solve', to: 'questions#solve', as: 'questions_solve'
+  get '/questions/unsolved', to: 'questions#unsolved', as: 'questions_unsolved'
+  get '/questions/solved', to: 'questions#solved', as: 'questions_solved'
   resources :questions do
     resources :answers
   end

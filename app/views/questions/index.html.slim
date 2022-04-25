@@ -1,33 +1,37 @@
-h1 質問一覧
-= link_to '質問作成', new_question_path, class: 'btn btn-primary'
+/ タブ
+ul.nav.nav-tabs.nav-justified.mb-3
+  li.nav-item= link_to '全て', questions_path, class: 'nav-link active' 
+  li.nav-item= link_to '未解決', questions_unsolved_path, class: 'nav-link'
+  li.nav-item= link_to '解決', questions_solved_path, class: 'nav-link'
 
-= search_form_for @q, class: 'mb-5' do |f|
-  .form-group.row 
-    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
-    .col-sm-10 
-      = f.search_field :title_cont, class: 'form-control'
-  .form-group 
-    = f.submit class: 'btn btn-outline-primary'
+/ 検索窓
+= search_form_for @q, class: 'form-inline mb-5' do |f|
+  .input-group.w-100 
+    = f.search_field :title_cont, class: 'form-control'
+    .input-group-append 
+      = f.submit '検索', class: 'btn btn-primary'
 
-.mb-3
+/ 質問一覧
+ul.list-unstyled 
+  - @questions.each do |question|
+    li.media.mb-3.border-bottom.pb-3.d-flex 
+      = image_tag current_user.image, class: 'me-3 rounded-circle', size: '64x64' 
+      .media-body
+        .d-flex
+          h5.mt-0.mb-1.me-3
+            = link_to question.title, question
+          .me-3
+            - if question.resolved?
+              span.badge.bg-success
+                '解決済み
+            - else
+              span.badge.bg-danger
+                '未解決 
+          div          
+            = link_to '編集', edit_question_path(question), class: 'btn btn-success btn-sm', role: 'button'
+            = link_to '削除', question, method: :delete, data: { confirm: '質問を削除します。よろしいですか？' }, class: 'btn btn-danger btn-sm', role: 'button'
+        = question.description
+
+/ ページネーション
+.d-flex.justify-content-center
   = paginate @questions
-  = page_entries_info @questions
-
-table.table.table-hover 
-  thead.thead-default 
-    tr 
-      th= Question.human_attribute_name(:image)
-      th= Question.human_attribute_name(:title)
-      th= Question.human_attribute_name(:description)
-      th= Question.human_attribute_name(:resolved)
-      th 
-  tbody 
-    - @questions.each do |question|
-      tr
-        td= image_tag current_user.image, class: 'mr-3 rounded-circle' 
-        td= link_to question.title, question  
-        td= question.description
-        td= question.resolved? ? '解決済み' : '未解決'
-        td 
-          = link_to '編集', edit_question_path(question), class: 'btn btn-success btn-sm'
-          = link_to '削除', question, method: :delete, data: { confirm: '質問を削除します。よろしいですか？' }, class: 'btn btn-danger btn-sm'

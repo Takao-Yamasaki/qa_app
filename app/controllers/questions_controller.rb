@@ -45,6 +45,16 @@ class QuestionsController < ApplicationController
     redirect_to question_url(@question), notice: '解決済みになりました。'
   end
 
+  def unsolved
+    @questions = Question.find_by(resolved: false)
+    # redirect_to questions_url
+  end
+
+  def solved
+    @questions = Question.find_by(resolved: true)
+    # redirect_to questions_url
+  end
+
   private
 
   def questions_params

@@ -1,23 +1,27 @@
 doctype html
 html
   head
+    title 
+      | RailsPractice
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .navbar-brand RailsPractice
-
-      ul.navbar-nav.ml-auto 
-        - if current_user
-          li.nav-item= link_to '質問一覧', questions_path, class: 'nav-link'
-          - if current_user.admin?
-            li.nav-item= link_to 'ユーザー一覧', admin_users_path, class: 'nav-link'
-          li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
-        - else 
-          li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
-    .container
+  body.vsc-initialized
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      = link_to 'Sample APP', root_path, class: 'navbar-brand' 
+      button.navbar-toggler type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          - if current_user
+            li.nav-item= link_to '質問作成', new_question_path, class: 'nav-link'
+            li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link', data: {confirm: 'ログアウトしますか'}
+            li.nav-item
+              span.nav-link #{current_user.name}
+          - else 
+            li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
+    .container.pt-5
       - if flash.notice.present?
         .alert.alert-succcess = flash.notice
       = yield
