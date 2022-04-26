@@ -46,13 +46,13 @@ class QuestionsController < ApplicationController
   end
 
   def unsolved
-    @questions = Question.find_by(resolved: false)
-    # redirect_to questions_url
+    @q = current_user.questions.where(resolved: false).ransack(params[:q])
+    @questions = @q.result(distinct: true).page(params[:page])
   end
 
   def solved
-    @questions = Question.find_by(resolved: true)
-    # redirect_to questions_url
+    @q = current_user.questions.where(resolved: true).ransack(params[:q])
+    @questions = @q.result(distinct: true).page(params[:page])
   end
 
   private
