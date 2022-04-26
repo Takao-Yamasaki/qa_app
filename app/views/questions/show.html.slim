@@ -21,7 +21,7 @@
           = link_to '編集', edit_question_path, class: 'btn btn-success btn-sm me-1', role: 'button'
           = link_to '削除', @question, method: :delete, data: {confirm: '削除しますか？'}, class: 'btn btn-danger btn-sm', role: 'button'
       .small.text-muted.d-flex.justify-content-end
-        = @question.created_at
+        = l @question.created_at
   hr
     = simple_format(h(@question.description), {}, sanitize: false, wrapper_tag: "div")
 / 回答内容
@@ -47,4 +47,4 @@
               div.justifiy-content-end
                 = link_to '削除', question_answer_path(@question, answer), method: :delete, data: {confirm: '削除しますか？'} , class: 'btn btn-danger btn-sm'  
                 .small.text-muted.d-flex.justify-content-end
-                  = answer.created_at
+                  = l answer.created_at
