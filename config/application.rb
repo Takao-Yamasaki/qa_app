@@ -10,6 +10,10 @@ module QaApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    # デフォルトロケールを日本に設定
+    config.i18n.default_locale = :ja
+    # タイムゾーンを日本時間に設定
+    config.time_zone = 'Asia/Tokyo'
 
     # Configuration for the application, engines, and railties goes here.
     #

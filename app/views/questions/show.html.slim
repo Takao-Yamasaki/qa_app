@@ -1,0 +1,50 @@
+/ 質問の詳細
+#question-area.card.card-body.mb-5
+  .d-flex
+    .me-3
+      = image_tag current_user.image, class: 'me-3 rounded-circle', size: '64x64'
+      .small.mx-2 #{current_user.name}
+    .flex-grow-1.d-flex.flex-column.justify-content-between
+      .d-flex.justify-content-between
+        h4 #{@question.title}
+        div 
+          - if @question.resolved?
+            span.badge.bg-success.me-1
+              '解決済み
+          - else
+            span.badge.bg-danger.me-1
+              '未解決
+          - if @question.resolved == false 
+            = link_to '解決済みにする', questions_solve_path(@question), method: :post, data: { confirm: '解決済みにしますか？' }, class: 'btn btn-sm btn-info' 
+      .d-flex.justify-content-end
+        div  
+          = link_to '編集', edit_question_path, class: 'btn btn-success btn-sm me-1', role: 'button'
+          = link_to '削除', @question, method: :delete, data: {confirm: '削除しますか？'}, class: 'btn btn-danger btn-sm', role: 'button'
+      .small.text-muted.d-flex.justify-content-end
+        = l @question.created_at
+  hr
+    = simple_format(h(@question.description), {}, sanitize: false, wrapper_tag: "div")
+/ 回答内容
+.card.card-body 
+  = form_with model: [@question, @answer], local: true do |f|
+    .form-group
+      = f.hidden_field :user_id, { value: current_user.id } 
+      = f.hidden_field :question_id, { value: @question.id }
+      = f.label :description, '回答内容'
+      = f.text_area :description, class: 'form-control m-2', id: 'answer_description'
+    = f.submit '回答する', class: 'btn btn-primary d-block m-auto'
+
+  hr
+    ul.list-unstyled
+      - @question.answers.each do |answer|
+        li.mb-3.border-bottom.pb-3
+          .d-flex.mb-3
+            div.p-2 
+              = image_tag current_user.image, size: '64x64', class: 'me-3 rounded-circle'  
+            div.p-2
+              p #{answer.description}  
+            .ms-auto.p-2.d-flex.flex-column
+              div.justifiy-content-end
+                = link_to '削除', question_answer_path(@question, answer), method: :delete, data: {confirm: '削除しますか？'} , class: 'btn btn-danger btn-sm'  
+                .small.text-muted.d-flex.justify-content-end
+                  = l answer.created_at

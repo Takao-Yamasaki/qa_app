@@ -1,0 +1,6 @@
+h1 質問の編集
+
+.nav.justify-content-end 
+  = link_to '質問作成', new_question_path, class: 'nav-link'
+
+= render partial: 'form', locals: { task: @task }
